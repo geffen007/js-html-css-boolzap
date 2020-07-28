@@ -1,0 +1,124 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.clearfix {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/* generali */
+
+.float-left {
+    float: left;
+}
+
+
+/* sfondo */
+
+.back {
+    width: 100vw;
+    height: 100vh;
+    background-color: #d6dbd7;
+
+}
+
+.back-top {
+    background-color: #009788;
+    position: fixed;
+    top:0;
+    height: 15%;
+    right: 0;
+    left: 0;
+
+}
+
+/* div principale */
+
+.container{
+    width: 90%;
+    max-height: calc(100% - 42px;);
+    z-index: 1;
+    position: fixed;
+    top: 18px;
+    bottom:24px;
+    left: calc(100vw - 95%);
+    right: calc(100vW - 95%);
+}
+
+/* aside */
+
+.aside {
+    width: 35%;
+    height: 100%;
+}
+
+.top-left {
+    width: 100%;
+    height: 88px;
+    background-color: #eaeaea;
+}
+
+.notifiche {
+    width: 100%;
+    height: 100px;
+    background-color: #8edafc;
+}
+
+.search {
+    width: 100%;
+    height: 63px;
+    background-color: #f9f9f9;
+}
+
+/* lista contatti */
+.list {
+    background-color: #ffffff;
+    height: calc(100% - 251px);
+    overflow-y: scroll;
+}
+
+.contact {
+    background-color: white;
+    height: 100px;
+    padding-right: 20px;
+}
+
+.contact:hover {
+    background-color: #e9ebea;
+}
+
+
+/* main */
+
+main {
+    width: 65%;
+    height: 100%;
+}
+
+.top-right {
+    width: 100%;
+    height: 88px;
+    background-color: #eaeaea;
+    border-left: 1px solid #d5d5d5;
+}
+
+.chat {
+    width: 100%;
+    height: calc(100% - 176px);
+    overflow-y: auto;
+    background-image: url("../img/bcg-bza.png");
+    background-repeat: repeat;
+    background-position: center;
+    background-color: #e5dcd5;
+    opacity: 0.3;
+}
+
+.my-message {
+    height: 88px;
+    width: 100%;
+    background-color: #f3eeea;
+}
