@@ -10,12 +10,23 @@
     clear: both;
 }
 
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
 /* generali */
 
 .float-left {
     float: left;
 }
 
+.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
 
 /* sfondo */
 
@@ -49,6 +60,17 @@
     right: calc(100vW - 95%);
 }
 
+.avatar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.avatar img{
+    height: 90%;
+    width: auto;
+    border-radius: 50%;
+}
+
 /* aside */
 
 .aside {
@@ -60,20 +82,73 @@
     width: 100%;
     height: 88px;
     background-color: #eaeaea;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 25px 7px 12px;
+}
+
+.user{
+    height: 100%;
+}
+
+.nav-left i {
+    font-size: 27px;
+    padding: 0 12px;
+    color: #b1b1b1;
 }
 
 .notifiche {
     width: 100%;
     height: 100px;
     background-color: #8edafc;
+    align-items: center;
+    padding: 12px;
 }
 
+.notifiche .icon {
+    padding: 10px;
+    border-radius: 50px;
+    background-color: #f2fbff;
+    font-size: 22px;
+}
+
+.notifiche i{
+    color: #8edafc;
+}
 .search {
     width: 100%;
     height: 63px;
-    background-color: #f9f9f9;
+    background-color: #fbfbfb;
+    padding: 10px;
+
 }
 
+.search-box {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.search input,
+.search span {
+    height: 100%;
+}
+
+.search span {
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.search i {
+    font-size: 24px;
+    padding-left: 10px;
+    color: #b1b1b1;
+}
+.search input {
+    width: 90%;
+    border: none;
+}
 /* lista contatti */
 .list {
     background-color: #ffffff;
@@ -84,14 +159,45 @@
 .contact {
     background-color: white;
     height: 100px;
-    padding-right: 20px;
+    border-bottom: 1px solid #f6f6f6;
+    padding: 6px 15px 6px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
 
 .contact:hover {
     background-color: #e9ebea;
 }
 
 
+.other {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.details {
+    padding-left: 10px;
+}
+
+.list .name {
+
+}
+
+.list .preview {
+    font-size: 14px;
+    color: grey;
+}
+
+.time {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 26px;
+
+}
 /* main */
 
 main {
@@ -104,6 +210,7 @@ main {
     height: 88px;
     background-color: #eaeaea;
     border-left: 1px solid #d5d5d5;
+    padding: 5px 10px;
 }
 
 .chat {
@@ -114,11 +221,63 @@ main {
     background-repeat: repeat;
     background-position: center;
     background-color: #e5dcd5;
-    opacity: 0.3;
+}
+
+.message {
+
+    width: 100%;
+    width: auto;
+    padding: 10px 40px;
+}
+
+.of-you {
+    border-radius: 10px;
+    background-color: white;
+    float: left;
+    max-width: 60%;
+    padding: 5px;
+}
+
+.of-me {
+    border-radius: 10px;
+    background-color: #d5f9bb;
+    float: right;
+    max-width: 60%;
+    padding: 5px;
+}
+
+.text-mess {
+    padding: 0 10px;
+}
+
+.time-mess {
+    width: 100%;
+    text-align: right;
+    color: grey;
+    font-size: 13px;
+    padding-right: 7px;
 }
 
 .my-message {
     height: 88px;
     width: 100%;
     background-color: #f3eeea;
+    padding: 10px 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.my-message i {
+    font-size: 27px;
+    color: #6b7376;
+    padding: 10px;
+}
+
+.my-message input{
+    width: 80%;
+    background-color: white;
+    height: 100%;
+    border:none;
+    border-radius: 10px;
+    padding: 10px 20px;
 }
