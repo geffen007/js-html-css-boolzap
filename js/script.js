@@ -4,7 +4,12 @@ $(document).ready(function() {
         '<p>io bene, tu?</p>',
         '<p>grazie</p>',
         '<p>ciao</p>',
-        '<p>è stato un piacere</p>'
+        '<p>è stato un piacere</p>',
+        '<p>come fai a saperlo</p>',
+        '<p>a me non funzion</p>',
+        '<p>pensavo la stessa cosa</p>',
+        '<p>no sei meglio te</p>',
+        '<p>prrr</p>',
     ]
 
 
@@ -21,6 +26,8 @@ $(document).ready(function() {
                 sendNow.addClass('sent');
                 $('.chat .overlay').append(sendNow);
                 document.getElementById("my-Mess").value="";
+                var scroll = $('.chat .overlay .message:last-child').position();
+                $('.chat .overlay').scrollTop(scroll.top);
 
                 setTimeout (function() {
                     receiveNow = $('.template .message').clone();
@@ -29,32 +36,17 @@ $(document).ready(function() {
                     receiveNow.append('<p>' + timeNow + '</p>');
                     receiveNow.addClass('received');
                     $('.chat .overlay').append(receiveNow);
-                },2000)
+                    var scroll = $('.chat .overlay .message:last-child').position();
+                    $('.chat .overlay').scrollTop(scroll.top);
+                },3000)
+
+
             }
         }
     }
 
-    // $('#my-Mess').keydown(sendMe);
-    //
-    //
-    //
-    //     if (event.which == 13 || event.keydown == 13 ) {
-    //         var sendNow = $('.template .message').clone();
-    //         var timeNow = time();
-    //         var messaggio = autoReply[getRandom(0, autoReply.length)];
-    //         sendNow.append('<p>' + messaggio + '</p>');
-    //         sendNow.append('<p>' + timeNow + '</p>');
-    //         sendNow.addClass('received');
-    //         $('.chat .overlay').append(sendNow);
-    //     }
-    //
-
-
-
-
-
-
-
+    var scroll = $('.chat .message:last-child').position();
+        $('.chat').scrollTop(scroll.top);
 });
 
 function getRandom(min, max) {
@@ -73,6 +65,6 @@ function time() {
     var h = addZero(d.getHours());
     var m = addZero(d.getMinutes());
     var x = h + ':' + m;
- return x;
+    return x;
 
 }
