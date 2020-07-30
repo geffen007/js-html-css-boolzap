@@ -42,14 +42,6 @@ $(document).ready(function() {
     });
 
 
-
-
-
-
-
-    //
-    // $('.top-right .avatar img').attr('src', src)
-
     function removeActive(){
         $('.list .contact').removeClass('focus');
         $('.chat .overlay').removeClass('active');
@@ -57,8 +49,6 @@ $(document).ready(function() {
 
     function selectChat(x){
         $('.chat .overlay').eq(x.index()).addClass('active');
-
-
     }
 
 
@@ -73,12 +63,16 @@ $(document).ready(function() {
                 sendNow.find('.text-mess span').append(messaggio);
                 sendNow.find('.time-mess span').append(timeNow);
                 sendNow.addClass('sent');
-                // if (chatActive()) {
-                    $('.chat .active').append(sendNow);
-                // }
+                $('.chat .active').append(sendNow);
+
                 $('#my-Mess').val("");
                 var scroll = $('.chat .overlay .message:last-child').position();
                 $('.chat .overlay').scrollTop(scroll.top);
+
+                // var element = $('.focus').clone();
+                // $('.focus').remove();
+                // $('.list').prepend(element);
+
                 setTimeout (function() {
                     receiveNow = $('.template .message').clone();
                     var tuoMessaggio = autoReply[getRandom(autoReply.length, 0)];
