@@ -12,6 +12,7 @@ $(document).ready(function() {
         'no sei meglio te',
         'a me non funziona',
         'prrr',
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     ];
 
     var avatar = $('.list .focus .avatar img');
@@ -23,6 +24,8 @@ $(document).ready(function() {
 
     var lastAccess = addZero(getRandom(0, 11)) + ":" + addZero(getRandom(0, 59))
     $('.top-right .details .last-access span').text(lastAccess);
+
+
 
     $('.list .contact').click(function(){
         removeActive();
@@ -39,6 +42,9 @@ $(document).ready(function() {
 
         var lastAccess = addZero(getRandom(0, 11))+":"+addZero(getRandom(0, 59))
         $('.top-right .details .last-access span').text(lastAccess);
+
+        var lastMessage = $('.active .message:last-child .text-mess span').text().substring(0,24);
+        $('.focus .preview span').text(lastMessage);
     });
 
 
@@ -72,6 +78,16 @@ $(document).ready(function() {
                 // var element = $('.focus').clone();
                 // $('.focus').remove();
                 // $('.list').prepend(element);
+                // var chatF = $('.active').clone();
+                // $('.active').remove();
+                // $('.chat').prepend(chatF);
+
+                var lastMessage = $('.active .message:last-child .text-mess span').text().substring(0,24);
+                $('.focus .preview span').text(lastMessage);
+                if (lastMessage.length >23){
+                    $('.preview span').append("...");
+                }
+
 
                 setTimeout (function() {
                     receiveNow = $('.template .message').clone();
@@ -82,9 +98,22 @@ $(document).ready(function() {
                     $('.chat .active').append(receiveNow);
                     var scroll = $('.chat .overlay .message:last-child').position();
                     $('.chat .overlay').scrollTop(scroll.top);
+                    var lastMessage = $('.active .message:last-child .text-mess span').text().substring(0,24);
+                    $('.focus .preview span').text(lastMessage);
+                    if (lastMessage.length >23){
+                        $('.preview span').append("...");
+                    }
+
+
                 },1000)
             }
+
         }
+    }
+
+    var prev = ($('.preview span')).text();
+    if (prev.length >29){
+        $('.preview span').append("...");
     }
 });
 
