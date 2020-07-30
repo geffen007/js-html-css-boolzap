@@ -28,6 +28,8 @@ body {
     flex-direction: column;
 }
 
+
+
 /* sfondo */
 
 .back {
@@ -65,11 +67,13 @@ body {
     display: flex;
     align-items: center;
 }
+
 .avatar img{
     height: 90%;
     width: auto;
     border-radius: 50%;
 }
+
 
 /* aside */
 
@@ -153,7 +157,7 @@ body {
 .list {
     background-color: #ffffff;
     height: calc(100% - 251px);
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .contact {
@@ -166,17 +170,21 @@ body {
     align-items: center;
 }
 
-
 .contact:hover {
     background-color: #e9ebea;
 }
 
+.focus {
+    background-color: #e9ebea;
+}
 
-.other {
+
+.box {
     height: 100%;
     display: flex;
     align-items: center;
 }
+
 .details {
     padding-left: 10px;
 }
@@ -221,6 +229,7 @@ main {
     padding: 10px;
 }
 
+
 .chat {
     width: 100%;
     height: calc(100% - 176px);
@@ -236,6 +245,7 @@ main {
     height: 100%;
     background-color: rgba(255, 255, 255, 0.7);
     overflow-y: auto;
+    display: none;
 }
 
 .message {
@@ -305,4 +315,8 @@ main {
 
 .template {
     display: none;
+}
+
+.active {
+    display: block;
 }

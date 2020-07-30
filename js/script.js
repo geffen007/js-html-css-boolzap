@@ -1,52 +1,97 @@
 $(document).ready(function() {
 
+
+
     var autoReply = [
-        '<p>io bene, tu?</p>',
-        '<p>grazie</p>',
-        '<p>ciao</p>',
-        '<p>è stato un piacere</p>',
-        '<p>come fai a saperlo</p>',
-        '<p>a me non funzion</p>',
-        '<p>pensavo la stessa cosa</p>',
-        '<p>no sei meglio te</p>',
-        '<p>prrr</p>',
-    ]
+        'io bene, tu?',
+        'grazie',
+        'ciao',
+        'è stato un piacere',
+        'come fai a saperlo',
+        'pensavo la stessa cosa',
+        'no sei meglio te',
+        'a me non funziona',
+        'prrr',
+    ];
+
+    var avatar = $('.list .focus .avatar img');
+    var src = avatar.attr('src');
+    $('.top-right .avatar img').attr('src', src);
+
+    var contactName = $('.list .focus .details .name span').clone();
+    $('.top-right .details .name').append(contactName);
+
+    var lastAccess = addZero(getRandom(0, 11)) + ":" + addZero(getRandom(0, 59))
+    $('.top-right .details .last-access span').text(lastAccess);
+
+    $('.list .contact').click(function(){
+        removeActive();
+        $(this).addClass('focus');
+        selectChat($(this));
+
+        var avatar= $(this).find('.avatar img');
+        var src = avatar.attr('src');
+        $('.top-right .avatar img').attr('src', src);
+
+        var contactName = $('.list .focus .details .name span').clone();
+        $('.top-right .details .name span').remove();
+        $('.top-right .details .name').append(contactName);
+
+        var lastAccess = addZero(getRandom(0, 11))+":"+addZero(getRandom(0, 59))
+        $('.top-right .details .last-access span').text(lastAccess);
+    });
+
+
+
+
+
+
+
+    //
+    // $('.top-right .avatar img').attr('src', src)
+
+    function removeActive(){
+        $('.list .contact').removeClass('focus');
+        $('.chat .overlay').removeClass('active');
+    }
+
+    function selectChat(x){
+        $('.chat .overlay').eq(x.index()).addClass('active');
+
+
+    }
+
 
 
     $('#my-Mess').keydown(send);
-
     function send(){
         if (event.which == 13 || event.keydown == 13 ) {
             var messaggio = $('#my-Mess').val();
             if(messaggio!=""){
                 var sendNow = $('.template .message').clone();
                 var timeNow = time();
-                sendNow.append('<p>' + messaggio + '</p>');
-                sendNow.append('<p>' + timeNow + '</p>');
+                sendNow.find('.text-mess span').append(messaggio);
+                sendNow.find('.time-mess span').append(timeNow);
                 sendNow.addClass('sent');
-                $('.chat .overlay').append(sendNow);
-                document.getElementById("my-Mess").value="";
+                // if (chatActive()) {
+                    $('.chat .active').append(sendNow);
+                // }
+                $('#my-Mess').val("");
                 var scroll = $('.chat .overlay .message:last-child').position();
                 $('.chat .overlay').scrollTop(scroll.top);
-
                 setTimeout (function() {
                     receiveNow = $('.template .message').clone();
                     var tuoMessaggio = autoReply[getRandom(autoReply.length, 0)];
-                    receiveNow.append('<p>' + tuoMessaggio + '</p>');
-                    receiveNow.append('<p>' + timeNow + '</p>');
+                    receiveNow.find('.text-mess span').append(tuoMessaggio);
+                    receiveNow.find('.time-mess span').append(timeNow);
                     receiveNow.addClass('received');
-                    $('.chat .overlay').append(receiveNow);
+                    $('.chat .active').append(receiveNow);
                     var scroll = $('.chat .overlay .message:last-child').position();
                     $('.chat .overlay').scrollTop(scroll.top);
-                },3000)
-
-
+                },1000)
             }
         }
     }
-
-    var scroll = $('.chat .message:last-child').position();
-        $('.chat').scrollTop(scroll.top);
 });
 
 function getRandom(min, max) {
