@@ -49,14 +49,17 @@ $(document).ready(function() {
     });
 
 
-    function removeActive(){
-        $('.list .contact').removeClass('focus');
-        $('.chat .overlay').removeClass('active');
-    }
+    $('#search').keyup(function(){
+        var testo = $('#search').val().toLowerCase();
+        $(".list .contact").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(testo) > -1);
+        });
+    });
 
-    function selectChat(x){
-        $('.chat .overlay').eq(x.index()).addClass('active');
-    }
+        // if(nome.includes(testo)){
+        //
+        // }
+
 
 
 
@@ -76,20 +79,12 @@ $(document).ready(function() {
                 var scroll = $('.chat .overlay .message:last-child').position();
                 $('.chat .overlay').scrollTop(scroll);
 
-                // var element = $('.focus').clone();
-                // $('.focus').remove();
-                // $('.list').prepend(element);
-                // var chatF = $('.active').clone();
-                // $('.active').remove();
-                // $('.chat').prepend(chatF);
-
                 var lastMessage = $('.active .message:last-child .text-mess span').text().substring(0,24);
                 $('.focus .preview span').text(lastMessage);
                 if (lastMessage.length >23){
                     $('.preview span').append("...");
                 }
                 $('.focus .time span').text(timeNow);
-
 
                 setTimeout (function() {
                     receiveNow = $('.template .message').clone();
@@ -107,7 +102,7 @@ $(document).ready(function() {
                     if (lastMessage.length >23){
                         $('.preview span').append("...");
                     }
-                    
+
                     $('.focus .time span').text(timeNow);
 
                     // var element = $('.focus').clone();
@@ -120,14 +115,20 @@ $(document).ready(function() {
 
                 },1000)
             }
-
+            // comeBack()
         }
     }
+
+
+
 
     var prev = ($('.preview span')).text();
     if (prev.length >29){
         $('.preview span').append("...");
     }
+
+
+
 });
 
 function getRandom(min, max) {
@@ -148,4 +149,22 @@ function addZero(i) {
    i = "0" + i;
  }
  return i;
+}
+
+// function comeBack() {
+//     var element = $('.focus').clone();
+//     $('.focus').remove();
+//     $('.list').prepend(element);
+//     var chatF = $('.active').clone();
+//     $('.active').remove();
+//     $('.chat').prepend(chatF);
+// }
+
+function removeActive(){
+    $('.list .contact').removeClass('focus');
+    $('.chat .overlay').removeClass('active');
+}
+
+function selectChat(x){
+    $('.chat .overlay').eq(x.index()).addClass('active');
 }
