@@ -46,20 +46,18 @@ $(document).ready(function() {
         var lastMessage = $('.active .message:last-child .text-mess span').text().substring(0,24);
         $('.focus .preview span').text(lastMessage);
 
+
     });
+
+
 
 
     $('#search').keyup(function(){
         var testo = $('#search').val().toLowerCase();
-        $(".list .contact").filter(function() {
+        $('.list .contact').filter(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(testo) > -1);
         });
     });
-
-        // if(nome.includes(testo)){
-        //
-        // }
-
 
 
 
@@ -86,6 +84,9 @@ $(document).ready(function() {
                 }
                 $('.focus .time span').text(timeNow);
 
+                cmBack();
+                cmBackChat();
+
                 setTimeout (function() {
                     receiveNow = $('.template .message').clone();
                     var tuoMessaggio = autoReply[getRandom(autoReply.length, 0)];
@@ -105,30 +106,18 @@ $(document).ready(function() {
 
                     $('.focus .time span').text(timeNow);
 
-                    // var element = $('.focus').clone();
-                    // $('.focus').remove();
-                    // $('.list').prepend(element);
-                    // var chatF = $('.active').clone();
-                    // $('.active').remove();
-                    // $('.chat').prepend(chatF);
-
+                    cmBack();
+                    cmBackChat();
 
                 },1000)
             }
-            // comeBack()
         }
     }
-
-
-
 
     var prev = ($('.preview span')).text();
     if (prev.length >29){
         $('.preview span').append("...");
     }
-
-
-
 });
 
 function getRandom(min, max) {
@@ -151,14 +140,18 @@ function addZero(i) {
  return i;
 }
 
-// function comeBack() {
-//     var element = $('.focus').clone();
-//     $('.focus').remove();
-//     $('.list').prepend(element);
-//     var chatF = $('.active').clone();
-//     $('.active').remove();
-//     $('.chat').prepend(chatF);
-// }
+
+function cmBack(){
+    var element= $('.focus');
+    $('.list').prepend(element);
+    $('.list').remove('.focus:last-child');
+}
+
+function cmBackChat(){
+    var element= $('.active');
+    $('.chat').prepend(element);
+    $('.chat').remove('.active:last-child');
+}
 
 function removeActive(){
     $('.list .contact').removeClass('focus');
