@@ -254,6 +254,7 @@ main {
     width: auto;
     padding: 10px 10px;
     margin: 5px 20px;
+    word-wrap: break-word;
 }
 
 .received {

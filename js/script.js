@@ -45,6 +45,7 @@ $(document).ready(function() {
 
         var lastMessage = $('.active .message:last-child .text-mess span').text().substring(0,24);
         $('.focus .preview span').text(lastMessage);
+
     });
 
 
@@ -73,7 +74,7 @@ $(document).ready(function() {
 
                 $('#my-Mess').val("");
                 var scroll = $('.chat .overlay .message:last-child').position();
-                $('.chat .overlay').scrollTop(scroll.top);
+                $('.chat .overlay').scrollTop(scroll);
 
                 // var element = $('.focus').clone();
                 // $('.focus').remove();
@@ -87,6 +88,7 @@ $(document).ready(function() {
                 if (lastMessage.length >23){
                     $('.preview span').append("...");
                 }
+                $('.focus .time span').text(timeNow);
 
 
                 setTimeout (function() {
@@ -96,13 +98,24 @@ $(document).ready(function() {
                     receiveNow.find('.time-mess span').append(timeNow);
                     receiveNow.addClass('received');
                     $('.chat .active').append(receiveNow);
+
                     var scroll = $('.chat .overlay .message:last-child').position();
-                    $('.chat .overlay').scrollTop(scroll.top);
+                    $('.chat .overlay').scrollTop(scroll);
+
                     var lastMessage = $('.active .message:last-child .text-mess span').text().substring(0,24);
                     $('.focus .preview span').text(lastMessage);
                     if (lastMessage.length >23){
                         $('.preview span').append("...");
                     }
+                    
+                    $('.focus .time span').text(timeNow);
+
+                    // var element = $('.focus').clone();
+                    // $('.focus').remove();
+                    // $('.list').prepend(element);
+                    // var chatF = $('.active').clone();
+                    // $('.active').remove();
+                    // $('.chat').prepend(chatF);
 
 
                 },1000)
@@ -121,13 +134,6 @@ function getRandom(min, max) {
   return Math.floor(Math.random()*(max - min))+min;
 }
 
-function addZero(i) {
- if (i < 10) {
-   i = "0" + i;
- }
- return i;
-}
-
 function time() {
     var d = new Date();
     var h = addZero(d.getHours());
@@ -135,4 +141,11 @@ function time() {
     var x = h + ':' + m;
     return x;
 
+}
+
+function addZero(i) {
+ if (i < 10) {
+   i = "0" + i;
+ }
+ return i;
 }
