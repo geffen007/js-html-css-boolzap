@@ -15,12 +15,11 @@ $(document).ready(function() {
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     ];
 
-    var avatar = $('.list .focus .avatar img');
-    var src = avatar.attr('src');
-    $('.top-right .avatar img').attr('src', src);
+    avatar();
 
-    var contactName = $('.list .focus .details .name span').clone();
-    $('.top-right .details .name').append(contactName);
+    contactName();
+
+
 
     var lastAccess = addZero(getRandom(0, 11)) + ":" + addZero(getRandom(0, 59))
     $('.top-right .details .last-access span').text(lastAccess);
@@ -32,13 +31,9 @@ $(document).ready(function() {
         $(this).addClass('focus');
         selectChat($(this));
 
-        var avatar= $(this).find('.avatar img');
-        var src = avatar.attr('src');
-        $('.top-right .avatar img').attr('src', src);
+        avatar();
 
-        var contactName = $('.list .focus .details .name span').clone();
-        $('.top-right .details .name span').remove();
-        $('.top-right .details .name').append(contactName);
+        contactName();
 
         var lastAccess = addZero(getRandom(0, 11))+":"+addZero(getRandom(0, 59))
         $('.top-right .details .last-access span').text(lastAccess);
@@ -48,6 +43,9 @@ $(document).ready(function() {
 
 
     });
+
+
+
 
 
 
@@ -74,18 +72,21 @@ $(document).ready(function() {
                 $('.chat .active').append(sendNow);
 
                 $('#my-Mess').val("");
+
                 var scroll = $('.chat .overlay .message:last-child').position();
                 $('.chat .overlay').scrollTop(scroll);
 
                 var lastMessage = $('.active .message:last-child .text-mess span').text().substring(0,24);
                 $('.focus .preview span').text(lastMessage);
                 if (lastMessage.length >23){
-                    $('.preview span').append("...");
+                    $('.focus .preview span').append("...");
                 }
                 $('.focus .time span').text(timeNow);
 
                 cmBack();
                 cmBackChat();
+
+
 
                 setTimeout (function() {
                     receiveNow = $('.template .message').clone();
@@ -101,7 +102,7 @@ $(document).ready(function() {
                     var lastMessage = $('.active .message:last-child .text-mess span').text().substring(0,24);
                     $('.focus .preview span').text(lastMessage);
                     if (lastMessage.length >23){
-                        $('.preview span').append("...");
+                        $('.focus .preview span').append("...");
                     }
 
                     $('.focus .time span').text(timeNow);
@@ -109,7 +110,15 @@ $(document).ready(function() {
                     cmBack();
                     cmBackChat();
 
-                },1000)
+                    $('.top-right .box .details .last-access p').text("Ultimo accesso alle ");
+                    $('.top-right .box .details .last-access p').append(timeNow);
+
+                },4000);
+
+
+                setTimeout(function() {
+                    $('.top-right .box .details .last-access p').text("Sta scrivendo...");
+                }, 2000);
             }
         }
     }
@@ -160,4 +169,17 @@ function removeActive(){
 
 function selectChat(x){
     $('.chat .overlay').eq(x.index()).addClass('active');
+}
+
+
+function avatar(){
+    var immagine = $('.list .focus .avatar img');
+    var attr = immagine.attr('src');
+    $('.top-right .avatar img').attr('src', attr);
+}
+
+
+function contactName(){
+    var contactName = $('.list .focus .details .name span').text();
+    $('.top-right .details .name').text(contactName);
 }
