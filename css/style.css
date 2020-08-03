@@ -53,7 +53,7 @@ body {
 
 .container{
     width: 90%;
-    max-height: calc(100% - 42px;);
+    max-height: calc(100% - 42px);
     z-index: 1;
     position: fixed;
     top: 18px;
@@ -187,10 +187,6 @@ body {
 
 .details {
     padding-left: 10px;
-}
-
-.list .name {
-
 }
 
 .list .preview {

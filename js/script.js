@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-
-
     var autoReply = [
         'io bene, tu?',
         'grazie',
@@ -19,12 +17,8 @@ $(document).ready(function() {
 
     contactName();
 
-
-
     var lastAccess = addZero(getRandom(0, 11)) + ":" + addZero(getRandom(0, 59))
-    $('.top-right .details .last-access span').text(lastAccess);
-
-
+    $('.top-right .details .last-access p').text("Ultimo accesso oggi alle " + lastAccess);
 
     $('.list .contact').click(function(){
         removeActive();
@@ -35,20 +29,12 @@ $(document).ready(function() {
 
         contactName();
 
-        var lastAccess = addZero(getRandom(0, 11))+":"+addZero(getRandom(0, 59))
-        $('.top-right .details .last-access span').text(lastAccess);
+        // var lastAccess = addZero(getRandom(0, 11))+":"+addZero(getRandom(0, 59))
+        // $('.top-right .details .last-access p').text("Ultimo accesso oggi alle " + lastAccess);
 
         var lastMessage = $('.active .message:last-child .text-mess span').text().substring(0,24);
         $('.focus .preview span').text(lastMessage);
-
-
     });
-
-
-
-
-
-
 
     $('#search').keyup(function(){
         var testo = $('#search').val().toLowerCase();
@@ -57,12 +43,11 @@ $(document).ready(function() {
         });
     });
 
-
-
     $('#my-Mess').keydown(send);
     function send(){
         if (event.which == 13 || event.keydown == 13 ) {
             var messaggio = $('#my-Mess').val();
+
             if(messaggio!=""){
                 var sendNow = $('.template .message').clone();
                 var timeNow = time();
@@ -85,8 +70,6 @@ $(document).ready(function() {
 
                 cmBack();
                 cmBackChat();
-
-
 
                 setTimeout (function() {
                     receiveNow = $('.template .message').clone();
@@ -149,7 +132,6 @@ function addZero(i) {
  return i;
 }
 
-
 function cmBack(){
     var element= $('.focus');
     $('.list').prepend(element);
@@ -171,13 +153,11 @@ function selectChat(x){
     $('.chat .overlay').eq(x.index()).addClass('active');
 }
 
-
 function avatar(){
     var immagine = $('.list .focus .avatar img');
     var attr = immagine.attr('src');
     $('.top-right .avatar img').attr('src', attr);
 }
-
 
 function contactName(){
     var contactName = $('.list .focus .details .name span').text();
